@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image :url("pexels-dids-3753031.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: -900px;
+            background-size: cover;
+        }
+        section{
+            color: #3a727f;
+            width: 620px;
+            border: 1px dotted #2d2d2d;
+            display: grid;
+            justify-content: center;
+            margin:130px auto;
+        }
+       button{
+        border: 2px white solid;
+        height: 35px;
+        width: 200px;
+        color: aliceblue;
+        background-color: #3a727f;
+       }
+        .content{
+            background-color: #c2dbdf;
+            font-size: large;
+            padding: 30px;
+            height: 40px;
+        } 
+        .content div{
+            display: none;
+        }
+        .btns .active {
+            background-color:#f8e1c5;
+            color: #4e7179;
+            font-size: 15px;
+        }
+        .show{
+        display: block  !important;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="btns">            
+            <button data-mark="html" class="active">Html</button>
+            <button data-mark="css">Css</button>
+            <button data-mark="js">Javascript</button>
+        </div>
+        <div class="content">
+            <div id="html" class="show">The HyperText Markup Language </div>
+            <div id="css">Cascading Style Sheets is a style sheet language</div>
+            <div id="js"> programming language that is one of the core technologies </div>
+        </div>
+    </section>
+    <script>
+        let btnsDiv=document.querySelector(".btns");
+        let btns = document.querySelectorAll(".btns button");
+        let contents = document.querySelectorAll(".content div");
+
+        btnsDiv.addEventListener("click",e=>{
+            let currentBtn = e.target;
+            let currentDiv = document.getElementById(currentBtn.dataset.mark);
+            btns.forEach((btn)=>{
+                btn.classList.remove("active");
+                currentBtn.classList.add("active");
+            })
+            contents.forEach((content)=>{
+                content.classList.remove("show");
+                currentDiv.classList.add("show");
+            })
+        })
+    </script>
+</body>
+</html>
